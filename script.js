@@ -5,19 +5,41 @@ chill.volume = 0.07;
 thrill.volume = 0;
 
 
-let ModeSwitch = document.getElementById("ModeSwitch");
+let nightMode = document.getElementById("switch3-radio1");
+let pauseMode = document.getElementById("switch3-radio2");
+let dayMode = document.getElementById("switch3-radio3");
 
-ModeSwitch.addEventListener("change", function () {
+
+dayMode.addEventListener("change", function () {
     chill.play();
     thrill.play();
        
-    if (ModeSwitch.checked) {
-
+    if (this.checked) {
         /*armageddon*/
         chill.volume = 0;  
         thrill.volume = 0.07;
 
-    } else {
+    }
+});
+
+
+pauseMode.addEventListener("change", function () {
+
+    if (this.checked) {
+
+        /*no audio*/
+        chill.volume = 0;  
+        thrill.volume = 0;
+
+    } 
+});
+
+
+nightMode.addEventListener("change", function () {
+    chill.play();
+    thrill.play();
+       
+   if (this.checked) {
         /*420*/
         chill.volume = 0.07;
         thrill.volume = 0;
