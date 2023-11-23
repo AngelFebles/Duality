@@ -5,15 +5,11 @@ chill.volume = 0.07;
 thrill.volume = 0;
 
 
-window.onload = function (){
-    chill.play();
-    thrill.play();
-}
-
-
 let ModeSwitch = document.getElementById("ModeSwitch");
 
 ModeSwitch.addEventListener("change", function () {
+    chill.play();
+    thrill.play();
        
     if (ModeSwitch.checked) {
 
