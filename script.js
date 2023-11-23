@@ -1,22 +1,29 @@
-let audioPlayer1 = document.getElementById("audioPlayer1");
-let audioPlayer2 = document.getElementById("audioPlayer2");
+let chill = document.getElementById("audioPlayer1");
+let thrill = document.getElementById("audioPlayer2");
 
-audioPlayer1.volume = 0.07;
-audioPlayer2.volume = 0;
+chill.volume = 0.07;
+thrill.volume = 0;
 
 
-let partyModeSwitch = document.getElementById("partyModeSwitch");
+window.onload = function (){
+    chill.play();
+    thrill.play();
+}
 
-partyModeSwitch.addEventListener("change", function () {
-    if (partyModeSwitch.checked) {
+
+let ModeSwitch = document.getElementById("ModeSwitch");
+
+ModeSwitch.addEventListener("change", function () {
+       
+    if (ModeSwitch.checked) {
 
         /*armageddon*/
-        audioPlayer1.volume = 0;  
-        audioPlayer2.volume = 0.07;
+        chill.volume = 0;  
+        thrill.volume = 0.07;
 
     } else {
         /*420*/
-        audioPlayer1.volume = 0.07;
-        audioPlayer2.volume = 0;
+        chill.volume = 0.07;
+        thrill.volume = 0;
           }
 });
