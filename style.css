@@ -32,7 +32,6 @@ body {
 .switch3::before{
   content: '';
   position: absolute;
-  left:0;
   width: 34%;
   height: 100%;
   background: #14142a;
@@ -50,4 +49,19 @@ body {
 }
 .switch3:has(#switch3-radio3:checked)::before{
   left: 66%;
+}
+
+
+/* Pump effect default 0 for no pumping*/
+.switch3-container {
+  animation: screenPump 0s infinite alternate;
+}
+
+@keyframes screenPump {
+  0% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(1.1);
+  }
 }
