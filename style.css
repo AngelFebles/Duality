@@ -4,30 +4,39 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
   margin: 0;
 }
 
 /* Hide default HTML checkbox */
-  .switch3-container input {
+  input {
+    display: flex;
     opacity: 0;
     width: 0;
-    height: 0;
-    
+    height: 0; 
   }
 
 .switch3{
   position: relative;
-  height:50px;
-  display:flex;
-  justify-content:space-around;
-  background-color: #2196F3;
+  height: 50px;
+  justify-content: space-around;
+  background-color: #2196f3;
   border-radius: 60px;
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 1;
 }
-.switch3 label{
+
+.switch3 div {
+  display: flex;
+  align-items: center;
+}
+
+label{
   padding: 1rem;
   z-index:1;
+  flex: 1;
 }
 .switch3::before{
   content: '';
@@ -54,7 +63,12 @@ body {
 
 /* Pump effect default 0 for no pumping*/
 .switch3-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
   animation: screenPump 0s infinite alternate;
+  max-width: 70vw;
+  
 }
 
 @keyframes screenPump {
