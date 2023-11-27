@@ -68,10 +68,10 @@ thrillMode.addEventListener("change", function () {
         thrill.volume = 0.07;
 
         // fast pump
-        container[0].style.animationDuration = '0.1s';
+        container[0].style.animationDuration = '0.25s';
 
         // start rain
-        startRain('石', 100, 'red', '5s');
+        startRain('戦', 100, 'red', '5s');
 
 
         //change background video to armyLoop
@@ -98,10 +98,10 @@ chillMode.addEventListener("change", function () {
         thrill.volume = 0;
 
         // slow pump
-        container[0].style.animationDuration = '1s';
+        container[0].style.animationDuration = '1.5s';
 
         // start rain
-        startRain('水', 500, '#006EFF', '60s');
+        startRain('平', 500, '#006EFF', '60s');
 
         //vaporwave background video
         videoSource.setAttribute('src' , './media/mp4/vaporwave.mp4');
