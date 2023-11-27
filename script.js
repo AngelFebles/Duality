@@ -60,7 +60,7 @@ thrillMode.addEventListener("change", function () {
         }
 
         currentMode = "day"; // Set the current mode to day
-        chill.play();
+        chill.pause();
         thrill.play();
 
         // armageddon plays
@@ -74,8 +74,8 @@ thrillMode.addEventListener("change", function () {
         startRain('石', 100, 'red', '5s');
 
 
-        //change background video to touhou
-        videoSource.setAttribute('src' , './media/mp4/touhou.mp4');
+        //change background video to armyLoop
+        videoSource.setAttribute('src' , './media/mp4/armyLoop.mov');
         backgroundVideo.load();
         backgroundVideo.play();
     }
@@ -91,7 +91,7 @@ chillMode.addEventListener("change", function () {
 
         currentMode = "night"; // Set the current mode to night
         chill.play();
-        thrill.play();
+        thrill.pause();
 
         // 420現代のコンピュー plays
         chill.volume = 0.07;
@@ -113,8 +113,13 @@ chillMode.addEventListener("change", function () {
 pauseMode.addEventListener("change", function () {
     if (this.checked) {
         // stop audio
+        thrill.pause();
+        chill.pause();
+
         chill.volume = 0;
         thrill.volume = 0;
+
+        
 
         // stop pump
         container[0].style.animationDuration = '0s';
