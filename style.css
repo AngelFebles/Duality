@@ -6,7 +6,19 @@ body {
   align-items: center;
   height: 100vh; 
   margin: 0;
+  user-select: none;
 }
+
+
+#backgroundVideo {
+  object-fit:cover;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 
 /* Hide default HTML checkbox */
   .switch3-container input {
@@ -76,7 +88,6 @@ body {
     position: fixed;
     color: rgb(0, 110, 255);
     animation: raindrop-fall 60s infinite;
-    user-select: none;
     font-size: 40px; 
     }
     @keyframes raindrop-fall {

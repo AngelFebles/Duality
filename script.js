@@ -1,19 +1,23 @@
 //420現代のコンピュー
 let chill = document.getElementById("audioPlayer1");
-
 //armageddon
 let thrill = document.getElementById("audioPlayer2");
 
-let nightMode = document.getElementById("switch3-radio1");
-let pauseMode = document.getElementById("switch3-radio2");
-let dayMode = document.getElementById("switch3-radio3");
+//background video
+let backgroundVideo = document.getElementById("backgroundVideo");
+let videoSource = document.getElementById("videoSource");
 
-//button container
+let chillMode = document.getElementById("switch3-radio1");
+let pauseMode = document.getElementById("switch3-radio2");
+let thrillMode = document.getElementById("switch3-radio3");
+
+//button container with all checks
 let container = document.getElementsByClassName("switch3-container");
 
 //rain starter
 let mizurain;
 
+//we dont start in any mode
 let currentMode = null;
 
 //Rain
@@ -47,7 +51,7 @@ let clearRain = function(){
 
 //Event Listeners for Buttons
 
-dayMode.addEventListener("change", function () {
+thrillMode.addEventListener("change", function () {
     if (this.checked) {
         // if the current mode is night, clear its interval
         if (currentMode === "night") {
@@ -68,10 +72,16 @@ dayMode.addEventListener("change", function () {
 
         // start rain
         startRain('石', 100, 'red', '5s');
+
+
+        //change background video to touhou
+        videoSource.setAttribute('src' , './media/mp4/touhou.mp4');
+        backgroundVideo.load();
+        backgroundVideo.play();
     }
 });
 
-nightMode.addEventListener("change", function () {
+chillMode.addEventListener("change", function () {
     if (this.checked) {
         // if current mode is day, clear its interval
         if (currentMode === "day") {
@@ -92,6 +102,11 @@ nightMode.addEventListener("change", function () {
 
         // start rain
         startRain('水', 500, '#006EFF', '60s');
+
+        //vaporwave background video
+        videoSource.setAttribute('src' , './media/mp4/vaporwave.mp4');
+        backgroundVideo.load();
+        backgroundVideo.play();
     }
 });
 
@@ -112,6 +127,10 @@ pauseMode.addEventListener("change", function () {
         
         // reset the current mode
         currentMode = null; 
+
+        //reset background video source to blank
+        videoSource.setAttribute('src' , '');
+        backgroundVideo.load();
     }
 });
 
