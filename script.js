@@ -20,20 +20,31 @@ let mizurain;
 //we dont start in any mode
 let currentMode = null;
 
+
 //Rain
-let createRaindrop = function(char,color,fallSpeed) {
+let createRaindrop = function(char, color, fallSpeed, currentMode) {
     const raindrop = document.createElement('div');
     raindrop.className = 'raindrop';
     raindrop.textContent = char;
     raindrop.style.animationDuration = fallSpeed;
+    raindrop.style.animationName = 'raindrop-fall';
     raindrop.style.color = color;
     raindrop.style.left = Math.random() * window.innerWidth + 'px';
-    document.body.appendChild(raindrop);
-  }
 
-let startRain = function (char,delay,color,fallSpeed) {
+    // Set the rotation animation duration
+    const styleSheet = document.styleSheets[0];
+    const ruleIndex = styleSheet.cssRules.length;
+    const rule = `@keyframes rotate-${ruleIndex} { 0% { transform: rotate(0deg) rotateY(0deg); } 100% { transform: rotate(360deg) rotateY(360deg); } }`;
+    styleSheet.insertRule(rule, ruleIndex);
+    raindrop.style.animationName += `, rotate-${ruleIndex}`;
+    raindrop.style.animationDuration += `, ${generateAnimationDuration(currentMode)}`;
+
+    document.body.appendChild(raindrop);
+}
+
+let startRain = function (char,delay,color,fallSpeed,currentMode) {
     mizurain = setInterval(function() {
-        createRaindrop(char,color,fallSpeed);
+        createRaindrop(char,color,fallSpeed,currentMode);
     }, delay);
 }
 
@@ -45,6 +56,23 @@ let clearRain = function(){
         });
         } 
 
+let generateAnimationDuration = function (currentMode) {
+  let duration;
+
+  if (currentMode === 'day') {
+    //between 1 and 10
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+    duration = `${randomNumber}s`;
+  } else if (currentMode === 'night') {
+    //between 10 and 20
+    const randomNumber = Math.floor(Math.random() * 11) + 10;
+    duration = `${randomNumber}s`;
+  } else {
+    duration = '1s'; // Default duration if mode is not recognized
+  }
+
+  return duration;
+}
 
 
 
@@ -71,7 +99,7 @@ thrillMode.addEventListener("change", function () {
         container[0].style.animationDuration = '0.25s';
 
         // start rain
-        startRain('戦', 100, 'red', '5s');
+        startRain('戦', 100, 'red', '4s',currentMode);
 
 
         //change background video to armyLoop
@@ -101,7 +129,7 @@ chillMode.addEventListener("change", function () {
         container[0].style.animationDuration = '1.5s';
 
         // start rain
-        startRain('平', 500, '#006EFF', '60s');
+        startRain('平', 500, '#006EFF', '60s',currentMode);
 
         //vaporwave background video
         videoSource.setAttribute('src' , './media/mp4/vaporwave.mp4');
@@ -138,4 +166,7 @@ pauseMode.addEventListener("change", function () {
         backgroundVideo.load();
     }
 });
+
+
+
 
