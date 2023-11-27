@@ -99,7 +99,7 @@ thrillMode.addEventListener("change", function () {
         container[0].style.animationDuration = '0.25s';
 
         // start rain
-        startRain('戦', 100, 'red', '4s',currentMode);
+        startRain('戦', 100, 'red', '2s',currentMode);
 
 
         //change background video to armyLoop
